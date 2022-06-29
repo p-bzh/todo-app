@@ -1,0 +1,8 @@
+<script>
+	import '../app.css';
+</script>
+
+<div class="container mx-auto my-6 max-w-lg">
+	<a href="/">back to home</a>
+	<slot />
+</div>
