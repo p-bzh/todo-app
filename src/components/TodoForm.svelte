@@ -1,9 +1,10 @@
 <script>
+	import { session } from '$app/stores';
 	import { addTodo } from '../stores/todoStore';
 	let todo;
 
 	const handleSubmit = () => {
-		addTodo(todo);
+		addTodo(todo, $session.user.uid);
 		todo = null;
 	};
 </script>
