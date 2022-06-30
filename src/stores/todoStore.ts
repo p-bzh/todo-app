@@ -1,4 +1,5 @@
 import { writable } from 'svelte/store';
+import type { Task } from '../types';
 import {
 	getDocs,
 	collection,
@@ -11,9 +12,9 @@ import {
 } from 'firebase/firestore';
 import { database } from '../firebase';
 
-export const tasks = writable([]);
+export const tasks = writable(Array<Task>());
 
-export const loadTasks = async (user_id) => {
+export const loadTasks = async (user_id: string) => {
 	const q = query(collection(database, 'tasks'), where('user_id', '==', user_id));
 	const result = await getDocs(q);
 	result.forEach((task) => {
@@ -23,8 +24,8 @@ export const loadTasks = async (user_id) => {
 	});
 };
 
-export const addTodo = async (text, user_id) => {
-	const task = {
+export const addTodo = async (text: string, user_id: string) => {
+	const task: Task = {
 		user_id,
 		text,
 		completed: false,
@@ -37,19 +38,19 @@ export const addTodo = async (text, user_id) => {
 	});
 };
 
-export const deleteTodo = async (id) => {
+export const deleteTodo = async (id: string) => {
 	await deleteDoc(doc(database, 'tasks', id));
 	tasks.update((tasks) => {
 		return tasks.filter((task) => task.id !== id);
 	});
 };
 
-export const toggleTodoCompleted = async (id, currentState) => {
+export const toggleTodoCompleted = async (id: string, currentState: boolean) => {
 	const ref = doc(database, 'tasks', id);
 	await updateDoc(ref, {
 		completed: !currentState
 	});
-	let index = null;
+	let index: number | null;
 	tasks.update((tasks) => {
 		for (let i = 0; i < tasks.length; i++) {
 			if (tasks[i].id === id) {

@@ -1,11 +1,11 @@
-<script>
+<script lang="ts">
 	import { session } from '$app/stores';
 	import { addTodo } from '../stores/todoStore';
-	let todo;
+	let text: string;
 
 	const handleSubmit = () => {
-		addTodo(todo, $session.user.uid);
-		todo = null;
+		addTodo(text, $session.user.uid);
+		text = '';
 	};
 </script>
 
@@ -16,7 +16,7 @@
 			type="text"
 			name="todo"
 			placeholder="What you need to do ?"
-			bind:value={todo}
+			bind:value={text}
 			class="appearance-none shadow-sm border border-grey-200 p-2 focus:outline-none focus:border-grey-500 rounded-lg"
 		/>
 	</div>
