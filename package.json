@@ -1,6 +1,7 @@
 {
 	"name": "my-app",
 	"version": "1.0.0",
+	"license": "MIT",
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",
