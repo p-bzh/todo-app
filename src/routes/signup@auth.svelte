@@ -1,6 +1,7 @@
 <script>
 	import { auth } from '../firebase';
 	import { session } from '$app/stores';
+	import { goto } from '$app/navigation';
 	import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 	let email, password;

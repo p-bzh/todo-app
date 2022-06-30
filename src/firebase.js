@@ -1,8 +1,6 @@
-import { session } from '$app/stores';
-import { goto } from '$app/navigation';
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
 	apiKey: import.meta.env.VITE_API_KEY,

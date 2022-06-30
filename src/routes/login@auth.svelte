@@ -1,9 +1,9 @@
-<script>
+<script lang="ts">
 	import { auth } from '../firebase';
 	import { goto } from '$app/navigation';
 	import { session } from '$app/stores';
 	import { signInWithEmailAndPassword } from 'firebase/auth';
-	let email, password;
+	let email: string, password: string;
 	const handleLogin = async () => {
 		try {
 			const userCredentials = await signInWithEmailAndPassword(auth, email, password);
@@ -23,7 +23,7 @@
 			<label for="">Email</label>
 			<input class="leading-5" type="email" bind:value={email} />
 		</div>
-		<div flex class="flex flex-col my-2">
+		<div class="flex flex-col my-2">
 			<label for="">Password</label>
 			<input class="leading-5" type="password" bind:value={password} />
 		</div>

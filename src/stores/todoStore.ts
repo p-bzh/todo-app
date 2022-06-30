@@ -21,7 +21,6 @@ export const loadTasks = async (user_id) => {
 			return [...cur, task.data()];
 		});
 	});
-	console.log(typeof tasks[0]);
 };
 
 export const addTodo = async (text, user_id) => {
@@ -33,7 +32,6 @@ export const addTodo = async (text, user_id) => {
 	};
 	const response = await addDoc(collection(database, 'tasks'), task);
 	task.id = response.id;
-	console.log(task);
 	tasks.update((cur) => {
 		return [...cur, task];
 	});
